@@ -1,0 +1,13 @@
+﻿@model giftstore.Models.Categoria
+
+@{
+    ViewBag.Title = "Navega";
+}
+
+<h2>Navegando Categoria: @Model.Nome</h2>
+@foreach(var item in Model.Itens)
+{
+<li>
+    @Html.ActionLink(item.Titulo, "Detalhes", new { id=item.ItemId})
+</li>
+}

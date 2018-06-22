@@ -1,0 +1,21 @@
+﻿@model IEnumerable<giftstore.Models.Categoria> 
+    
+
+@{
+    ViewBag.Title = "Loja";
+}
+
+<h2>Navegar Categoria</h2>
+<p>
+    Selecione de @Model.Count()
+    Tipos:
+
+        
+</p>
+<ul>
+    @foreach (var categoria in Model)
+    {
+        <li> @Html.ActionLink(@categoria.Nome, "Navega", new { categoria = categoria.Nome })</li>
+    }
+</ul>
+

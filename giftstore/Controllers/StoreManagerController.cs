@@ -10,18 +10,18 @@ using giftstore.Models;
 
 namespace giftstore.Controllers
 {
-    public class ItemsController : Controller
+    public class StoreManagerController : Controller
     {
         private GiftStoreEntities db = new GiftStoreEntities();
 
-        // GET: Items
+        // GET: StoreManager
         public ActionResult Index()
         {
             var itens = db.Itens.Include(i => i.Categoria).Include(i => i.Fabricante);
-            return View(db.Itens.ToList());
+            return View(itens.ToList());
         }
 
-        // GET: Items/Details/5
+        // GET: StoreManager/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,16 +36,15 @@ namespace giftstore.Controllers
             return View(item);
         }
 
-        // GET: Items/Create
+        // GET: StoreManager/Create
         public ActionResult Create()
         {
             ViewBag.CategoriaId = new SelectList(db.Categorias, "CategoriaId", "Nome");
             ViewBag.FabricanteId = new SelectList(db.Fabricantes, "FabricanteId", "Nome");
-
             return View();
         }
 
-        // POST: Items/Create
+        // POST: StoreManager/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -58,13 +57,13 @@ namespace giftstore.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             ViewBag.CategoriaId = new SelectList(db.Categorias, "CategoriaId", "Nome", item.CategoriaId);
             ViewBag.FabricanteId = new SelectList(db.Fabricantes, "FabricanteId", "Nome", item.FabricanteId);
-
             return View(item);
         }
 
-        // GET: Items/Edit/5
+        // GET: StoreManager/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -76,12 +75,12 @@ namespace giftstore.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryId = new SelectList(db.Categorias, "CategoriaId", "Nome", item.CategoriaId);
-            ViewBag.ProducerId = new SelectList(db.Fabricantes, "FabricanteId", "Nome", item.FabricanteId);
+            ViewBag.CategoriaId = new SelectList(db.Categorias, "CategoriaId", "Nome", item.CategoriaId);
+            ViewBag.FabricanteId = new SelectList(db.Fabricantes, "FabricanteId", "Nome", item.FabricanteId);
             return View(item);
         }
 
-        // POST: Items/Edit/5
+        // POST: StoreManager/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -94,10 +93,12 @@ namespace giftstore.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CategoriaId = new SelectList(db.Categorias, "CategoriaId", "Nome", item.CategoriaId);
+            ViewBag.FabricanteId = new SelectList(db.Fabricantes, "FabricanteId", "Nome", item.FabricanteId);
             return View(item);
         }
 
-        // GET: Items/Delete/5
+        // GET: StoreManager/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -112,7 +113,7 @@ namespace giftstore.Controllers
             return View(item);
         }
 
-        // POST: Items/Delete/5
+        // POST: StoreManager/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

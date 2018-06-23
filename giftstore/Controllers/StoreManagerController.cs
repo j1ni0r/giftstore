@@ -10,6 +10,7 @@ using giftstore.Models;
 
 namespace giftstore.Controllers
 {
+    [Authorize(Users ="shmjunior@msn.com")]
     public class StoreManagerController : Controller
     {
         private GiftStoreEntities db = new GiftStoreEntities();

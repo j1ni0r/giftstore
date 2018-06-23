@@ -21,7 +21,7 @@ namespace giftstore.Models
         [StringLength(160)]
         public string Titulo { get; set; }
         [Required(ErrorMessage = "Um valor é requerido")]
-        [Range(0.1, 100, ErrorMessage = "Preço precisa ser entre 0.1 e 100")]
+        [Range(0.1, 10000, ErrorMessage = "Preço precisa ser entre 0.1 e 10000")]
         public decimal Preco { get; set; }
         [DisplayName("Url de imagem do item")]
         [StringLength(1024)]

@@ -11,6 +11,9 @@ namespace giftstore.Models
         public DbSet<Item> Itens { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Fabricante> Fabricantes { get; set; }
+        public DbSet<Carrinho> Carrinhos  { get; set; }
+        public DbSet<Compra> Compras { get; set; }
+        public DbSet<DetalhesCompra> DetalhesCompras { get; set; }
 
 
     }

@@ -1,0 +1,29 @@
+﻿@model giftstore.Models.Item
+
+@{
+    ViewBag.Title = "Item - " + Model.Titulo;
+}
+<h2>@Model.Titulo</h2>
+<p>
+    <img alt="@Model.Titulo"
+         src="@Model.ItemArtUrl\" />
+</p>
+<div id="item-details">
+    <p>
+        <em>Categoria:</em>
+        @Model.Categoria.Nome
+    </p>
+    <p>
+        <em>Fabricante:</em>
+        @Model.Fabricante.Nome
+    </p>
+    <p>
+        <em>Preço:</em>
+        @String.Format("{0:F}", Model.Preco)
+    </p>
+    <p class="button1">
+        @Html.ActionLink("Adicionar ao carrinho", "AddToCart",
+        "CarrinhoCompra", new { id = Model.ItemId }, "")
+    </p>
+    <div class="fb-comments" data-width="230" data-numposts="5"></div>
+</div>

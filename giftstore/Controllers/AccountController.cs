@@ -22,6 +22,13 @@ namespace giftstore.Controllers
         {
         }
 
+        private void MigrateShoppingCart(string Email)
+        {
+            var carrinho = CarrinhoCompra.GetCarrinho(this.HttpContext);
+            carrinho.MigrateCart(Email);
+            Session[CarrinhoCompra.CarrinhoSessaoKey] = Email;
+        }
+
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;

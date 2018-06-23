@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace giftstore.Controllers
 {
-    public class StoreController : Controller
+    public class LojaController : Controller
     {
         GiftStoreEntities storeDB = new GiftStoreEntities();
         // GET: Store

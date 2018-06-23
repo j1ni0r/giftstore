@@ -6,7 +6,7 @@ using System.Web;
 
 namespace giftstore.Models
 {
-    public class Carrinho
+    public class carrinho
     {
         [Key]
         public int RegistroId { get; set; }

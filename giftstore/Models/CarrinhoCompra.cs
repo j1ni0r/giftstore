@@ -35,7 +35,7 @@ namespace giftstore.Models
             if (carrinhoItem == null)
             {
 
-                carrinhoItem = new Carrinho
+                carrinhoItem = new carrinho
                 {
                     ItemId = item.ItemId,
                     CarrinhoId = CarrinhoCompraId,
@@ -90,7 +90,7 @@ namespace giftstore.Models
             storeDB.SaveChanges();
         }
 
-        public List<Carrinho> GetCarrinhoItens()
+        public List<carrinho> GetCarrinhoItens()
         {
             return storeDB.Carrinhos.Where(
                 carrinho => carrinho.CarrinhoId == CarrinhoCompraId).ToList();
@@ -176,7 +176,7 @@ namespace giftstore.Models
             var carrinhoCompra = storeDB.Carrinhos.Where(
                 c => c.CarrinhoId == CarrinhoCompraId);
 
-            foreach (Carrinho item in carrinhoCompra)
+            foreach (carrinho item in carrinhoCompra)
             {
                 item.CarrinhoId = Email;
             }

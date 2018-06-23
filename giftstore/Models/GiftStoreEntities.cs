@@ -15,6 +15,6 @@ namespace giftstore.Models
         public DbSet<Compra> Compras { get; set; }
         public DbSet<DetalhesCompra> DetalhesCompras { get; set; }
 
-
+        public System.Data.Entity.DbSet<giftstore.Models.MetPagamento> MetPagamentoes { get; set; }
     }
 }

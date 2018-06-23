@@ -1,33 +1,83 @@
-﻿@model IEnumerable<giftstore.ViewModels.CarrinhoCompraViewModel>
-
+﻿@model giftstore.ViewModels.CarrinhoCompraViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Carrinho de Compras";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
+<script src="/Scripts/jquery-1.4.4.min.js"
+        type="text/javascript"></script>
+<script type="text/javascript">$(function () {
+        // Document.ready -> link up remove event handler
+        $(".RemoveLink").click(function () {
+            // Get the id from the link
+            var recordToDelete = $(this).attr("data-id");
+            if (recordToDelete != '') {
+                // Perform the ajax post
+                $.post("/CarrinhoCompra/RemoverDoCarrinho", {"id": recordToDelete },
+                    function (data) {
+                        // Successful requests get here
+                        // Update the page elements
+                        if (data.ItemCount == 0) {
+                            $('#row-' + data.DeleteId).fadeOut('slow');
+                        } else {
+                            $('#item-count-' + data.DeleteId).text(data.ItemCount);
+                        }
+                        $('#carrinho-total').text(data.CarrinhoTotal .CartTotal);
+                        $('#update-message').text(data.Message);
+                        $('#cart-status').text('Cart (' + data.CartCount + ')');
+                    });
+            }
+        });
+    });</script>
+<h3>
+    <em>Review</em> your cart:
+</h3>
+<p class="button">
+    @Html.ActionLink("Checkout>> ", "AddressAndPayment", "Checkout")
 </p>
-<table class="table">
+<div id="update-message">
+</div>
+<table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CarrinhoTotal)
+            Nome do Item
+        </th>
+        <th>
+            Preço (cada)
+        </th>
+        <th>
+            Quantidade
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
+    @foreach (var item in Model.CarrinhoItens)
+    {
+        <tr id="row-@item.RegistroId">
+            <td>
+                @Html.ActionLink(item.Item.Titulo,
+"Detalhes", "Loja", new { id = item.ItemId }, null)
+            </td>
+            <td>
+                @item.Item.Preco
+            </td>
+            <td id="item-count-@item.RegistroId">
+                @item.Cont
+            </td>
+            <td>
+                <a href="#" class="RemoveLink"
+                   data-id="@item.RegistroId">
+                    Remove
+                    from cart
+                </a>
+            </td>
+        </tr>
+    }
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.CarrinhoTotal)
+            Total
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        <td></td>
+        <td></td>
+        <td id="carrinho-total">
+            @Model.CarrinhoTotal
         </td>
     </tr>
-}
-
 </table>

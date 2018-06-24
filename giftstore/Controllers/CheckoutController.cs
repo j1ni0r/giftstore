@@ -1,9 +1,12 @@
-﻿using giftstore.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using giftstore.Models;
 
 namespace giftstore.Controllers
 {
@@ -16,11 +19,13 @@ namespace giftstore.Controllers
         public ActionResult AddressAndPayment()
         {
             return View();
+           
         }
 
         [HttpPost]
         public ActionResult AddressAndPayment(FormCollection values)
         {
+
             var compra = new Compra();
             TryUpdateModel(compra);
 
@@ -29,6 +34,7 @@ namespace giftstore.Controllers
                 if (string.Equals(values["PromoCode"], PromoCode,
                     StringComparison.OrdinalIgnoreCase) == false)
                 {
+
                     return View(compra);
                 }
                 else
@@ -43,13 +49,13 @@ namespace giftstore.Controllers
                     var carrinho = CarrinhoCompra.GetCarrinho(this.HttpContext);
                     carrinho.CriarCompra(compra);
 
-                    return RedirectToAction("Completo",
+                    return RedirectToAction("Complete",
                         new { id = compra.CompraId });
                 }
             }
             catch
             {
-
+                
                 return View(compra);
             }
         }

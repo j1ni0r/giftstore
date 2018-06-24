@@ -5,15 +5,15 @@ namespace giftstore.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<giftstore.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<giftstore.Models.GiftStoreEntities>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
-            ContextKey = "giftstore.Models.ApplicationDbContext";
+            AutomaticMigrationsEnabled = true;
+            ContextKey = "giftstore.Models.GiftStoreEntities";
         }
 
-        protected override void Seed(giftstore.Models.ApplicationDbContext context)
+        protected override void Seed(giftstore.Models.GiftStoreEntities context)
         {
             //  This method will be called after migrating to the latest version.
 

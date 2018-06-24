@@ -14,7 +14,7 @@ namespace giftstore.Models
         public DbSet<carrinho> Carrinhos  { get; set; }
         public DbSet<Compra> Compras { get; set; }
         public DbSet<DetalhesCompra> DetalhesCompras { get; set; }
-
-        public System.Data.Entity.DbSet<giftstore.Models.MetPagamento> MetPagamentoes { get; set; }
+        public DbSet<MetPagamento> MetPagamentos { get; set; }
+        //public System.Data.Entity.DbSet<giftstore.Models.MetPagamento> MetPagamentoes { get; set; }
     }
 }

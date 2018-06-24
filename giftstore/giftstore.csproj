@@ -198,16 +198,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CarrinhoCompraController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\EditaComprasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\LojaController.cs" />
     <Compile Include="Controllers\StoreManagerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806220326141_InitialCreate.cs" />
-    <Compile Include="Migrations\201806220326141_InitialCreate.Designer.cs">
-      <DependentUpon>201806220326141_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -232,9 +229,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Imagens\10_percent_off_blue.png" />
-    <Content Include="Content\Imagens\new_item_light_blue.png" />
-    <Content Include="Content\Imagens\new_item_light_red.png" />
+    <Content Include="Content\Imagens\10porcento_azul.jpg" />
+    <Content Include="Content\Imagens\new_item_blue.jpg" />
+    <Content Include="Content\Imagens\new_item_red.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -300,6 +297,13 @@
     <Content Include="Views\CarrinhoCompra\Index.cshtml" />
     <Content Include="Views\Checkout\AddressAndPayment.cshtml" />
     <Content Include="Views\Checkout\Complete.cshtml" />
+    <Content Include="Views\EditaCompras\Create.cshtml" />
+    <Content Include="Views\EditaCompras\Delete.cshtml" />
+    <Content Include="Views\EditaCompras\Details.cshtml" />
+    <Content Include="Views\EditaCompras\Edit.cshtml" />
+    <Content Include="Views\EditaCompras\Index.cshtml" />
+    <Content Include="Views\EditaCompras\VendaRealizada.cshtml" />
+    <Content Include="Views\CarrinhoCompra\CarrinhoResumo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -316,11 +320,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806220326141_InitialCreate.resx">
-      <DependentUpon>201806220326141_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

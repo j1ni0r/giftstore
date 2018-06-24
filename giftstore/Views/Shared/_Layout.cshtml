@@ -26,12 +26,15 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Loja", "Index", "Loja")</li>
                     <li>@Html.ActionLink("Produtos", "Index", "Storemanager")</li>
-                    
+                    <li>@{Html.RenderAction("CarrinhoResumo", "CarrinhoCompra");}</li>
+
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
+    <!-- <li>//{Html.RenderAction("MenuCategoria", "Loja");}</li> -->
     <div class="container body-content">
         @RenderBody()
         <hr />

@@ -17,8 +17,14 @@ namespace giftstore.Controllers
             {
                 return View(categorias);
             };
- 
+
+    }
+        public ActionResult MenuCategoria()
+        {
+            var categorias = storeDB.Categorias.ToList();
+            return PartialView(categorias);
         }
+
         public ActionResult Navega(string categoria)
         {
             var categoryModel = storeDB.Categorias.Include("Itens").Single(c=>c.Nome==categoria);

@@ -304,6 +304,7 @@
     <Content Include="Views\EditaCompras\Index.cshtml" />
     <Content Include="Views\EditaCompras\VendaRealizada.cshtml" />
     <Content Include="Views\CarrinhoCompra\CarrinhoResumo.cshtml" />
+    <Content Include="Views\Loja\MenuCategoria.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
